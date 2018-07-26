@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springdatatest
+    username: root
+    password: root
+#     driver-class-name: oracle.jdbc.OracleDriver  
+#     url: jdbc:oracle:thin:@192.168.4.171:1521/db 
+#     username: tjcustoms  
+#     password: tjc 
+     #连接池属性配置 
+    type: com.alibaba.druid.pool.DruidDataSource   #使用的数据库连接池
+    initialSize: 5                                 #初始连接数量
+    minIdle: 2                                     #最小连接数
+    maxActive: 10                                  #最大连接数量
+    maxWait: 60000                                 #获取连接超时时间
+    timeBetweenEvictionRunsMillis: 60000           #间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 30000              #一个连接在池中最小生存的时间，单位是毫秒
+     
+  jpa:
+    #database: ORACLE
+    show-sql: true
+    hibernate:
+      ddl-auto: update #是否自动建表，实体属性更新是否更新相关属性到数据库相关字段          
+server:
+  port: 8080     

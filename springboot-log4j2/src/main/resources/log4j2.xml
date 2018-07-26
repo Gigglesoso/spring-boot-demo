@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration属性status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--Configuration属性monitorInterval：Log4j能够自动检测修改配置文件和重新配置本身，设置间隔秒数-->
+<Configuration status="trace">
+    <!-- Appenders,常见的有三种子节点:Console、RollingFile、File -->
+    <Appenders>
+<!--     	<Properties> -->
+<!-- 			<Property name="theHostName">${hostName}</Property>   log4j2的日志框架允许我们直接在配置文件中通过${hostName}来获取主机名称 -->
+<!-- 		</Properties> -->
+<!--     	Console用来指定输出到控制台的appender   -->
+        <Console name="console" target="SYSTEM_OUT">
+<!--         	PatternLayout用来指定输出的格式     -->
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%c]-[%p] - %m%n</pattern>
+            </PatternLayout> 
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" /> 
+        </Console>
+        <!-- file用来指定输出到文件中的appender -->
+<!--         <file name="file" fileName="error/errorLog.log"> fileName指定输出日志的目的文件带全路径的文件名 -->
+<!--         	<PatternLayout>输出的格式 -->
+<!--         		<pattern>%-d{yyyy-MM-dd HH:mm:ss} [%X{hostname}] [%c]-[%p] - %m%n</pattern>   可以通过占位符取出filter中存放在ThreadContext中的信息，方便我们在日志信息中输出，例如可以输出ip -->
+<!--         	</PatternLayout> -->
+<!--         	这里是只输出error级别的错误日志 -->
+<!--         	<Filters> -->
+<!--         		<ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL" />  先过滤掉不需要的,思路:Deny到fatal级别及以上的日志，剩下的中立 -->
+<!--         		<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />  选择error级别及以上的，然后需要和上面过滤的取交集，达到只选择固定级别的日志输出的固定文件 -->
+<!--         	</Filters> -->
+<!--         </file> -->
+        <!-- 用来定义超过指定大小自动删除旧的创建新的的Appender --> <!-- 这里直接使用占位符获取了主机名称 -->
+         <RollingFile name="infoFile" fileName="info/infoLog.log"   
+                  filePattern="info/infoLog-%d{yyyy-MM-dd}-%i.log" ><!--  fileName指定输出日志的目的文件带全路径的文件名，filePattern:指定新建日志文件的名称格式-->
+          <PatternLayout> <!--  代表日志输出格式-->
+            <pattern>%-d{yyyy-MM-dd HH:mm:ss.SSS}-[%c]-[%p]-${hostName}-%m%n</pattern>    
+          </PatternLayout>
+          <Filters>                                                               <!-- filter可以选择输出指定等级的log -->
+       		<ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL" />  <!--先过滤掉不需要的,思路:Deny到fatal级别及以上的日志，剩下的中立-->
+       		<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />  <!-- 选择error级别及以上的，然后需要和上面过滤的取交集，达到只选择固定级别的日志输出的固定文件 -->
+          </Filters>  
+          <Policies>  
+              <TimeBasedTriggeringPolicy />               <!--基于时间滚动策略,interval属性规定多久滚动一次，默认是1h -->
+              <SizeBasedTriggeringPolicy size="20m" />     <!--基于文件大小滚动， 大于2k就换一个日志文件，这里主要做测试，所以设置的比较小-->
+          </Policies>  
+          <DefaultRolloverStrategy max="10" />    <!--用来指定同一个文件夹下最多有几个日志文件时开始删除最旧的，创建新的(通过max属性)。-->
+        </RollingFile>
+        <!-- 测试Marker -->
+<!--           <RollingFile name="testMarker" fileName="testMarker/infoLog.log"    -->
+<!--                   filePattern="testMarker/infoLog-%d{yyyy-MM-dd}-%i.log" > fileName指定输出日志的目的文件带全路径的文件名，filePattern:指定新建日志文件的名称格式 -->
+<!--           <PatternLayout>  代表日志输出格式 -->
+<!--             <pattern>%-d{yyyy-MM-dd HH:mm:ss.SSS}-[%c]-[%p]-${hostName}-%m%n</pattern>     -->
+<!--           </PatternLayout> -->
+<!--           <MarkerFilter marker="TESTMARKER" onMatch="ACCEPT" onMismatch="DENY"/>该标记在日志输出的时候指定好后，则将日志信息输入到该appender指定的文件内 -->
+<!--           <Policies>   -->
+<!--               <TimeBasedTriggeringPolicy />               基于时间滚动策略,interval属性规定多久滚动一次，默认是1h -->
+<!--               <SizeBasedTriggeringPolicy size="20k" />     基于文件大小滚动， 大于2k就换一个日志文件，这里主要做测试，所以设置的比较小 -->
+<!--           </Policies>   -->
+<!--           <DefaultRolloverStrategy max="10" />    用来指定同一个文件夹下最多有几个日志文件时开始删除最旧的，创建新的(通过max属性)。 -->
+<!--         </RollingFile> -->
+    </Appenders> 
+    
+    <!-- 常见的子节点有Root和Logger，Logger可以指定某一个class采用特定的appender输出，root代表根目录下所有的的class --> 
+    <Loggers> 
+    	<!-- 用来指定项目的根日志，如果没有单独指定Logger，那么就会默认使用该Root日志输出 -->
+        <root level="debug">    <!-- Root的子节点，用来指定该日志输出到哪个Appender. -->
+            <AppenderRef ref="console"/>  		<!--  测试markere的appender-->
+          	<AppenderRef ref="infoFile"/>    		<!-- 测试按大小分组 -->
+        </root>
+        <!-- 节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等,这个Logger节点可以让我们为特定class指定相应输出级别，这里给这三个包指定输出级别为ERROR，这样这三个包只有在发生异常时才会输出日志，减少了日志文件中这三个包debug，info等日志的输出。-->
+  		<!-- 变向的屏蔽了这些包的日志输出，只有在发生异常时才会输出。 -->
+  		 <Logger name="org.springframework" level="ERROR"></Logger>
+  		 <Logger name="org.hibernate" level="ERROR"></Logger>
+  		 <Logger name="org.apache" level="ERROR"></Logger>    
+    </Loggers>  
+</Configuration> 

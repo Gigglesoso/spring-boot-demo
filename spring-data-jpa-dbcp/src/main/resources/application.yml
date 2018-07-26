@@ -1,0 +1,28 @@
+#数据库连接属性配置
+spring:
+  datasource:
+    #driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:mysql://127.0.0.1:3306/springdatatest
+    #username: root
+    #password: root
+     driver-class-name: oracle.jdbc.OracleDriver  
+     url: jdbc:oracle:thin:@192.168.4.171:1521/db 
+     username: tjcustoms  
+     password: tjc
+     type: org.apache.commons.dbcp2.BasicDataSource
+    #springboot默认支持dbcp2,这里直接配置连接池相关信息即可
+     dbcp2: 
+      initial-size: 2    #初始数量
+      max-total: 10      #最大连接数量
+      min-idle: 2
+              
+      
+  #jpa的相关配置,具体配置属性，可以通过alt+/在相应位置获取，停留在某属性上会有相关的属性doc说明    
+  jpa:
+    #database: ORACLE
+    show-sql: true
+    hibernate:
+      ddl-auto: update #是否自动建表，实体属性更新是否更新相关属性到数据库相关字段     
+      
+server:
+  port: 8082    
