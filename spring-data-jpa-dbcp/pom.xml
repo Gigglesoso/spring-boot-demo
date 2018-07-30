@@ -57,6 +57,7 @@
             <artifactId>mysql-connector-java</artifactId>             <!-- mysql依赖 -->
         </dependency>
         
+		
         <dependency>  
 		    <groupId>com.oracle</groupId>  
 		    <artifactId>ojdbc14</artifactId>  
