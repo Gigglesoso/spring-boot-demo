@@ -58,6 +58,8 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>    <!-- spring-data-jpa -->
         </dependency>
         
+		
+		
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>             <!-- mysql依赖 -->
