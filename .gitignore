@@ -3,3 +3,41 @@
 
 
 
+/LockExceptionAndAOP/*.gitignore
+/LockExceptionAndAOP/.mvn/wrapper/*.jar
+/LockExceptionAndAOP/.mvn/wrapper/*.properties
+/LockExceptionAndAOP/*
+/OptimisticLockingFailure/*.gitignore
+/OptimisticLockingFailure/.mvn/wrapper/*.jar
+/OptimisticLockingFailure/.mvn/wrapper/*.properties
+/OptimisticLockingFailure/*
+/spring-boot-async/*.gitignore
+/spring-boot-async/.mvn/wrapper/*.jar
+/spring-boot-async/.mvn/wrapper/*.properties
+/spring-boot-async/*
+/spring-boot-scheduled/*.gitignore
+/spring-boot-scheduled/.mvn/wrapper/*.jar
+/spring-boot-scheduled/.mvn/wrapper/*.properties
+/spring-boot-scheduled/*
+/spring-boot-scheduled/*.xml
+/spring-data-jpa-dbcp/*.gitignore
+/spring-data-jpa-dbcp/.mvn/wrapper/*.jar
+/spring-data-jpa-dbcp/.mvn/wrapper/*.properties
+/spring-data-jpa-dbcp/*
+/spring-data-jpa-druid/*.gitignore
+/spring-data-jpa-druid/.mvn/wrapper/*.jar
+/spring-data-jpa-druid/.mvn/wrapper/*.properties
+/spring-data-jpa-druid/*
+/spring-data-redis/*.gitignore
+/spring-data-redis/.mvn/wrapper/*.jar
+/spring-data-redis/.mvn/wrapper/*.properties
+/spring-data-redis/*
+/springboot-log4j2/*.gitignore
+/springboot-log4j2/.mvn/wrapper/*.jar
+/springboot-log4j2/.mvn/wrapper/*.properties
+/springboot-log4j2/info/*.log
+/springboot-log4j2/*
+/springboot-static-html/*.gitignore
+/springboot-static-html/.mvn/wrapper/*.jar
+/springboot-static-html/.mvn/wrapper/*.properties
+/springboot-static-html/*
