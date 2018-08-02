@@ -19,7 +19,7 @@
 /spring-boot-scheduled/.mvn/wrapper/*.jar
 /spring-boot-scheduled/.mvn/wrapper/*.properties
 
-/spring-boot-scheduled/*.xml
+
 /spring-data-jpa-dbcp/*.gitignore
 /spring-data-jpa-dbcp/.mvn/wrapper/*.jar
 /spring-data-jpa-dbcp/.mvn/wrapper/*.properties
@@ -46,3 +46,6 @@
 /spring-boot-exceptionHandler/.mvn/wrapper/maven-wrapper.properties
 /spring-boot-exceptionHandler/mvnw
 /spring-boot-exceptionHandler/.mvn/wrapper/*.jar
+/spring-boot-exceptionHandler/.mvn/wrapper/maven-wrapper.jar
+/spring-boot-scheduled/.mvn/wrapper/maven-wrapper.jar
+/spring-boot-scheduled/mvnw
