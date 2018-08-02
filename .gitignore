@@ -41,3 +41,8 @@
 /springboot-static-html/.mvn/wrapper/*.jar
 /springboot-static-html/.mvn/wrapper/*.properties
 /springboot-static-html/*
+/spring-boot-exceptionHandler/.gitignore
+/spring-boot-exceptionHandler/.mvn/wrapper/maven-wrapper.jar
+/spring-boot-exceptionHandler/.mvn/wrapper/maven-wrapper.properties
+/spring-boot-exceptionHandler/mvnw
+/spring-boot-exceptionHandler/.mvn/wrapper/*.jar
