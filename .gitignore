@@ -18,7 +18,7 @@
 /spring-boot-scheduled/*.gitignore
 /spring-boot-scheduled/.mvn/wrapper/*.jar
 /spring-boot-scheduled/.mvn/wrapper/*.properties
-/spring-boot-scheduled/*
+
 /spring-boot-scheduled/*.xml
 /spring-data-jpa-dbcp/*.gitignore
 /spring-data-jpa-dbcp/.mvn/wrapper/*.jar
