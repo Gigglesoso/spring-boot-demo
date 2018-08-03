@@ -14,4 +14,16 @@ public class EmployeeService {
 	public Employee findById(String id) {
 		return mapper.findById(id);
 	}
+	
+	public void insert(Employee emp) {
+		mapper.insert(emp);
+	}
+	
+	public void deleteById(String id) {
+		mapper.deleteById(id);
+	}
+	
+	public void update(Employee emp) {
+		mapper.update(emp);
+	}
 }
