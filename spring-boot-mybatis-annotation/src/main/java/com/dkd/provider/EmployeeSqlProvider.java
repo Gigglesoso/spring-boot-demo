@@ -25,4 +25,18 @@ public class EmployeeSqlProvider {
 		}
 		return sql.toString();
 	}
+	//动态拼接sql,动态更新
+	public String dynamicUpdate(Employee emp) {
+		return new SQL() {{
+			UPDATE("employee");
+			SET("id=#{id}");
+			if(!StringUtils.isNullOrEmpty(emp.getEmployeeName())) {
+				SET("employeeName=#{employeeName}");
+			}
+			if(!StringUtils.isNullOrEmpty(emp.getEmployeeGender())) {
+				SET("employeeGender=#{employeeGender}");
+			}
+			WHERE("id=#{id}");
+		}}.toString();
+	}
 }

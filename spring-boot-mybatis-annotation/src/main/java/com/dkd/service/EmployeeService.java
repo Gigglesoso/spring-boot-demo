@@ -32,4 +32,8 @@ public class EmployeeService {
 	public List<Employee> dynamicSearch(Employee emp){
 		return mapper.dynamicSearch(emp);
 	}
+	
+	public void dynamicUpdate(Employee emp) {
+		mapper.dynamicUpdate(emp);
+	}
 }

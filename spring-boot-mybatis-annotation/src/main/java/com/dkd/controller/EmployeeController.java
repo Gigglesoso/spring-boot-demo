@@ -56,4 +56,10 @@ public class EmployeeController {
 	public List<Employee> dynamicSearch(@RequestBody Employee emp){
 		return service.dynamicSearch(emp);
 	}
+	//动态更新，只更新有值的字段
+	@RequestMapping("/dynamicUpdate")
+	public String dynamicUpdate(@RequestBody Employee emp) {
+		service.dynamicUpdate(emp);
+		return "更新成功！";
+	}
 }

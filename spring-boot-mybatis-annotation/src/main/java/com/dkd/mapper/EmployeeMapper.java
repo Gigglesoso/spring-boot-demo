@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.UpdateProvider;
 
 import com.dkd.entity.Employee;
 import com.dkd.provider.EmployeeSqlProvider;
@@ -34,4 +35,7 @@ public interface EmployeeMapper {
     //动态查询
     @SelectProvider(type=EmployeeSqlProvider.class,method="dynamicSearch")
     List<Employee> dynamicSearch(Employee emp);
+    //动态更新，只有当属性不为null时才会更新相应字段
+    @UpdateProvider(type=EmployeeSqlProvider.class,method="dynamicUpdate")
+    void dynamicUpdate(Employee emp) ;
 }
