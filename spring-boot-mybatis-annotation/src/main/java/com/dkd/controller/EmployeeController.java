@@ -1,8 +1,10 @@
 package com.dkd.controller;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,5 +50,10 @@ public class EmployeeController {
 		emp.setEmployeeGender("newgender");
 		service.update(emp);
 		return "更新成功！";
+	}
+	//动态查询
+	@RequestMapping("/dynamicSearch")
+	public List<Employee> dynamicSearch(@RequestBody Employee emp){
+		return service.dynamicSearch(emp);
 	}
 }

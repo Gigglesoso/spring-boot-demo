@@ -1,13 +1,17 @@
 package com.dkd.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 
 import com.dkd.entity.Employee;
+import com.dkd.provider.EmployeeSqlProvider;
 /**
  * @author Administrator
  *
@@ -27,4 +31,7 @@ public interface EmployeeMapper {
     
     @Update("UPDATE EMPLOYEE SET employeeName = #{employeeName}, employeeGender = #{employeeGender}")
     int update(Employee emp);
+    //动态查询
+    @SelectProvider(type=EmployeeSqlProvider.class,method="dynamicSearch")
+    List<Employee> dynamicSearch(Employee emp);
 }
