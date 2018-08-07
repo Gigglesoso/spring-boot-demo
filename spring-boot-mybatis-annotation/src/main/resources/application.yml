@@ -7,3 +7,10 @@ spring:
 
 server:
   port: 8080
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true   #配置mybatis属性和数据库字段自动进行驼峰自动映射，例如数据库字段phone_number,实体属性为phoneNumber
+logging:
+  level:
+    com.dkd.mapper: debug  #Mapper所在的包,设置该包的日志打印级别，可以输出sql语句

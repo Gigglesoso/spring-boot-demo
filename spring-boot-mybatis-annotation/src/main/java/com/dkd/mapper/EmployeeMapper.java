@@ -32,10 +32,13 @@ public interface EmployeeMapper {
     
     @Update("UPDATE EMPLOYEE SET employeeName = #{employeeName}, employeeGender = #{employeeGender}")
     int update(Employee emp);
+    
     //动态查询
     @SelectProvider(type=EmployeeSqlProvider.class,method="dynamicSearch")
     List<Employee> dynamicSearch(Employee emp);
+    
     //动态更新，只有当属性不为null时才会更新相应字段
     @UpdateProvider(type=EmployeeSqlProvider.class,method="dynamicUpdate")
     void dynamicUpdate(Employee emp) ;
+    
 }

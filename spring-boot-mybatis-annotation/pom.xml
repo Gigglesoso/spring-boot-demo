@@ -45,6 +45,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>  
+		    <groupId>com.github.pagehelper</groupId>  <!-- mybatis分页插件 -->
+		    <artifactId>pagehelper</artifactId>  
+		<version>4.2.1</version>  
+		</dependency>  
 	</dependencies>
 
 	<build>
