@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  
+
+mail:
+  fromMail:
+    addr: fromMail        #设置发送邮箱
+
+spring:
+  mail:
+    host: smtp.163.com
+    username: test@163.com    #这里设置邮箱
+    password: test    #设置密码
+    default-encoding: UTF-8
+    
