@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+  
+  #文件上传时的一些参数设置 
+  http:
+    multipart:
+      enabled: true             #默认支持文件上传
+      location: D:/             #文件上传后存放的位置
+      max-request-size: 10Mb    #请求的大小,(这里注意单位需要使用Mb)
+      max-file-size: 5Mb        #上传的文件大小  ，若超出大小限制则会抛出异常，(单位同上)
+      file-size-threshold: 0    #支持写入硬盘
