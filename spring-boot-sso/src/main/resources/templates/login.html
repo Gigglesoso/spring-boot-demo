@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>登录</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/sign.css" />
+</head>
+<body>
+    <h1>请登录</h1>
+    <form action="/sso/doLogin" method="post" class="form-signin">
+        <input  type="hidden" name="gotoUrl" th:value="${gotoUrl}" />
+        <span>用户名：</span><input type="text" name="username" class="form-control" style="width:200px"/>
+        <span>密    码：</span><input type="password" name="password" class="form-control" style="width:200px"/>
+        <input type="submit" class="btn btn-primary btn-block "  style="width:100px"/>
+    </form>
+</body>
+<script type="text/javascript">
+	
+</script>
+</html>
