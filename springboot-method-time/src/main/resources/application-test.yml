@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: time-test
+
+server:
+  port: 8080
+  
+logging:
+  config: classpath:log4j2_test.xml  #日志配置文件
+  

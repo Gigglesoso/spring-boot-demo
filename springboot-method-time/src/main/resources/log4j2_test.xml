@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<Configuration status="TRACE">
+    <Properties>
+        <Property name="fileName">D:/logs/sp_log_test</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="debugFile"
+                     fileName="${fileName}/debug/debugLog.log"
+                     filePattern="${fileName}/debug/debugLog-%d{yyyy-MM-dd}-%i.log" >
+            <PatternLayout>
+                <pattern>%-d{yyyy-MM-dd HH:mm:ss.SSS}-[%c]-[%p]-${hostName}-%m%n</pattern>
+            </PatternLayout>
+            <!--先过滤掉不需要的,思路:Deny到INFO级别及以上的日志，剩下的中立-->
+            <Filters>
+                <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL" />
+                <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="20m" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" />
+        <!-- 添加的过滤器，指定marker输出到指定文件 -->    
+        </RollingFile>
+        <Async name="asyncAppender" includeLocation="true">
+            <AppenderRef ref="debugFile"/>
+		</Async>
+    </Appenders>
+    
+    <Loggers>
+        <!-- 用来指定项目的根日志，如果没有单独指定Logger，那么就会默认使用该Root日志输出 -->
+        <root level="trace">
+            <AppenderRef ref="debugFile"/>
+        </root>
+        <Logger name="org.springframework" level="ERROR"></Logger>
+        <Logger name="org.hibernate" level="ERROR"></Logger>
+        <Logger name="org.apache" level="ERROR"></Logger>
+        <Logger name="com.netflix" level="ERROR"></Logger>
+    </Loggers>
+</Configuration> 
