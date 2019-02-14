@@ -37,7 +37,7 @@ public class DownLoadController {
 	
 	
 	/**
-	 * 这个下载模板使用了ClassPathResource，可以避免使用
+	 * 这个下载模板使用了ClassPathResource
 	 * @param response
 	 */
 	@RequestMapping(value = "/downLoad2")
